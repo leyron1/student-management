@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zarządzanie listami uczniów</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Zarządzanie listą uczniów</h1>
+
+
+      <div class="form-group">
+        <input id="list-name" type="text" placeholder="Nazwa listy" class="input-field">
+        <select id="table-type-selector" class="input-field">
+          <option value="attendance">Frekwencja</option>
+          <option value="fundraising">Zbiórka funduszy</option>
+        </select>
+        <button onclick="createList()" class="btn">Utwórz listę</button>
+      </div>
+
+
+      <div class="form-group">
+        <label for="list-selector">Wybierz listę:</label>
+        <select id="list-selector" onchange="loadList()" class="input-field">
+          <option value="">-- Wybierz listę --</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <input id="name" type="text" placeholder="Imię" class="input-field">
+        <input id="surname" type="text" placeholder="Nazwisko" class="input-field">
+        <button onclick="addStudent()" class="btn">Dodaj ucznia</button>
+      </div>
+
+
+      <div class="form-group">
+        <button onclick="exportJSON()" class="btn">Eksportuj JSON</button>
+        <input id="import-file" type="file" accept=".json" onchange="importJSON()" class="input-field-file">
+        <button onclick="triggerImport()" class="btn">Importuj</button>
+      </div>
+
+
+      <div class="form-group">
+        <button onclick="clearTable()" class="btn">Wyczyść tabelę</button>
+        <button onclick="deleteTable()" class="btn">Usuń listę</button>
+        <button onclick="clearLocalStorage()" class="btn">Wyczyść wszystkie dane</button>
+      </div>
+    </div>
+
+
+    <table id="student-table" style="display:none;">
+      <thead>
+        <tr>
+          <th>Nazwisko</th>
+          <th>Imię</th>
+          <th>Działanie</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+
+    <button onclick="printPage()" class="btn btn-print">Drukuj</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
